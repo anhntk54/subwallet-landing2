@@ -23,4 +23,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}7
           wranglerVersion: '3.90.0'
-          command: pages deploy docs --project-name=worker
+          command: |
+            rm -f package.json package-lock.json
+            pages deploy docs --project-name=worker
