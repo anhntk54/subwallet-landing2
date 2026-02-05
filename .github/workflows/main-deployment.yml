@@ -24,5 +24,12 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}7
           wranglerVersion: '3.90.0'
           command: |
-            rm -f package.json package-lock.json
-            pages deploy docs --project-name=worker
+            # 1. Di chuyển vào folder docs
+            cd docs
+            
+            # 2. Khởi tạo một file package rỗng bên trong docs để đánh lừa hệ thống
+            # Điều này ngăn Wrangler quét ngược ra ngoài thư mục gốc (nơi có iltorb lỗi)
+            echo '{}' > package.json
+            
+            # 3. Chạy lệnh deploy trực tiếp từ folder docs
+            npx wrangler pages deploy . --project-name=worker
