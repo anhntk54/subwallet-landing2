@@ -3,7 +3,7 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - main  # Hoặc tên branch bạn đang dùng
+      - main  # Hoặc tên branch bạn đang dùng1
 
  jobs:
   deploy:
